@@ -1,10 +1,12 @@
 # ERC20 Template Subgraph
 
 ## Description
-This subgraph template enables developers to track  balances and approvals for ERC20 tokens.
 
+This subgraph template enables developers to track balances and approvals for
+ERC20 tokens.
 
 ## Build Instructions
+
 ```
 # copy env and adjust its content
 # you can get an access token from https://thegraph.com/explorer/dashboard
@@ -19,9 +21,11 @@ yarn deploy
 ```
 
 ## Features & Capabilities
+
 Here are a few examples of types of queries that can be run:
 
 ### Get asset information for your ERC20 token
+
 ```
 {
   assets(first: 1) {
@@ -34,6 +38,7 @@ Here are a few examples of types of queries that can be run:
 ```
 
 ### Get a user's token balance
+
 ```
 {
   user(id: "0x574300348823910c6f82a6a3d859791b9cd0310e") {
@@ -43,6 +48,7 @@ Here are a few examples of types of queries that can be run:
 ```
 
 ### Time travel query: get token balance at specified block number
+
 ```
 {
   user(
@@ -55,6 +61,7 @@ Here are a few examples of types of queries that can be run:
 ```
 
 ### Get a user's balance, and approvals
+
 ```
 {
   user(id: "0x0000000000007f150bd6f54c40a34d7c3d5e9f56") {

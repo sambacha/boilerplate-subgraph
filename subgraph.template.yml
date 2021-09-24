@@ -6,11 +6,11 @@ schema:
 dataSources:
   - name: ERC20
     kind: ethereum/contract
-    network: {{network}}
+    network: { { network } }
     source:
       address: '{{address}}'
       abi: Token
-      startBlock: {{block}}
+      startBlock: { { block } }
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.4
