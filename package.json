@@ -1,0 +1,42 @@
+{
+  "name": "create-subgraph-erc20",
+  "version": "1.0.0",
+  "license": "MIT",
+  "scripts": {
+    "prepare:mainnet": "mustache config/mainnet.json subgraph.template.yaml > subgraph.yaml",
+    "codegen": "graph -r dotenv/config codegen --output-dir src/types/",
+    "build": "graph build --ipfs https://api.staging.thegraph.com/ipfs/ ",
+    "deploy": "dotenv -- cross-var \"graph deploy %SLUG% --ipfs https://api.thegraph.com/ipfs/ --node https://api.thegraph.com/deploy/ --access-token %ACCESS_TOKEN%\"",
+    "prettier": "./node_modules/.bin/prettier —-write '**/*.ts'",
+    "launch": "npm run prepare:mainnet && npm run codegen && npm run build && npm run deploy"
+  },
+  "devDependencies": {
+    "@graphprotocol/graph-cli": "0.18.0",
+    "@graphprotocol/graph-ts": "0.18.0",
+    "@typescript-eslint/eslint-plugin": "^2.0.0",
+    "@typescript-eslint/parser": "^2.0.0",
+    "eslint": "^6.2.2",
+    "eslint-config-prettier": "^6.1.0",
+    "husky": "^3.0.5",
+    "lint-staged": "^9.2.5",
+    "prettier": "^2.4.1",
+    "typescript": "^3.5.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{ts,tsx,js,jsx,json,css,md}": [
+      "prettier --write --config ./.prettierrc",
+      "git add"
+    ]
+  },
+  "dependencies": {
+    "cross-var": "^1.1.0",
+    "dotenv-cli": "^4.0.0",
+    "mustache": "^4.2.0",
+    "tslib": "^2.3.1"
+  }
+}
